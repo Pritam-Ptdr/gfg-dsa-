@@ -1,66 +1,31 @@
-//{ Driver Code Starts
-// Initial Template for Java
-
-/*package whatever //do not write package name here */
-
-import java.io.*;
-import java.util.*;
-
-class GFG {
-    public static void main(String args[]) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter out = new PrintWriter(System.out);
-
-        int t = Integer.parseInt(in.readLine().trim());
-        while (t-- > 0) {
-            String line = in.readLine();
-            String[] tokens = line.split(" ");
-
-            // Create an ArrayList to store the integers
-            ArrayList<Integer> array = new ArrayList<>();
-
-            // Parse the tokens into integers and add to the array
-            for (String token : tokens) {
-                array.add(Integer.parseInt(token));
-            }
-
-            int[] arr = new int[array.size()];
-            int idx = 0;
-            for (int i : array) arr[idx++] = i;
-
-            int key = Integer.parseInt(in.readLine().trim());
-            Solution ob = new Solution();
-            out.println(ob.kthSmallest(arr, key));
-            out.println("~");
-        }
-        out.flush();
-    }
-}
-
-// } Driver Code Ends
-
-
 // User function Template for Java
 
 class Solution {
     public static int kthSmallest(int[] arr, int k) {
-      
-    for (int i = 0; i < arr.length - 1; i++) {
-        for (int j = i + 1; j < arr.length; j++) {
-            if (arr[i] > arr[j]) {
-                // Swap arr[i] and arr[j]
-                int temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
+        // Your code here
+        Arrays.sort(arr);
+        int  n = arr.length ;
+        
+        int num  = 0 ;
+        for(int i = 0 ; i<n ; i++){
+            
+            if(k == 1){
+               return   num = arr[0];
             }
+            
+            if(k == n){
+                return num =  arr[n-1];
+            }
+            
+        
+        if(k ==i && k>1){
+        return  arr[i-1] ;
+    
         }
+        }
+        
+        return 0;
     }
-
-    // Return the k-th smallest element
-    if (k > 0 && k <= arr.length) {
-        return arr[k - 1]; // k is 1-based index
-    } else {
-        return -1; // Return -1 if k is out of bounds
-    }
+    
+    
 }
-}  
